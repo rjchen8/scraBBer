@@ -8,4 +8,7 @@ Call this variable ```URI``` in the .env file.
 
 Add ```PORT``` variable to same .env file, frontend is designed to make calls to the backend to ```localhost:1337```, however this can be easily changed by modifying the ```App.jsx``` file.
 
+To start frontend beginning from scraper filepath: ```cd frontend``` -> ```npm run dev```
+To start backend beginning from scraper filepath: ```cd backend``` -> ```npm start```
+
 <img src="https://i.imgur.com/4GnqCiu.png">
