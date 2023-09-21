@@ -27,12 +27,12 @@ app.post('/api', async(req, res) => { // user posts link to api
     }
 })
 
-app.get('/api', async(req, res) => {
+app.get('/api', async(req, res) => { // user gets info from the listing just posted to the database
     const data = await runDatabase("get");  
     return res.status(200).send(data);
 })
 
-app.put('/api', async(req, res) => {
+app.put('/api', async(req, res) => { // user updates database
     const link = req.body.link;
     const available = await getAvailability(link);
     const sale = await getSale(link);
@@ -40,7 +40,7 @@ app.put('/api', async(req, res) => {
     return res.status(200).send(newData);
 })
 
-app.delete('/api/:productId', async(req,res) => {
+app.delete('/api/:productId', async(req,res) => { // user deletes database
     const productId = req.params.productId;
     await runDatabase("delete", null, null, null, null, productId);
     return res.status(200).send();

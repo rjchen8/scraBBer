@@ -2,7 +2,7 @@ const axios = require('axios');
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
-async function getAvailability(link) {
+async function getAvailability(link) { // grabs sale availability from site
     const root = await axios.get(link);
     const dom = new jsdom.JSDOM(root.data);
     if (dom.window.document.querySelector('.availabilityMessage_3ZSBM').textContent == "Available to ship") {
@@ -13,7 +13,7 @@ async function getAvailability(link) {
     }
 }
 
-async function getSale(link) {
+async function getSale(link) { // grabs sale status from site
     const root = await axios.get(link);
     const dom = new jsdom.JSDOM(root.data);
     if (dom.window.document.querySelector('.productSaleDate_353UZ')) {
@@ -24,7 +24,7 @@ async function getSale(link) {
     }
 }
 
-async function getProduct(link) {
+async function getProduct(link) { // grabs name of product from site
     const root = await axios.get(link);
     const dom = new jsdom.JSDOM(root.data);
     const product = dom.window.document.querySelector('.productName_2KoPa').textContent; 

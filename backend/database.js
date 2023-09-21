@@ -40,12 +40,12 @@ async function runDatabase(method, available, sale, link, product, id) { // mayb
     }
 }
 
-async function createListing(client, newListing) { 
+async function createListing(client, newListing) {  // inserts listing with data into mongo
     const result = await client.db("scraped").collection("data").insertOne(newListing);
     console.log(`New listing created with ID ${result.insertedId}`);
 }
 
-async function findNewestListing(client) {
+async function findNewestListing(client) { // finds listing just created to display to the user
     try {
         const cursor = await client.db("scraped").collection("data").find().sort({_id:-1}).limit(1);
         const result = await cursor.toArray()
@@ -57,7 +57,7 @@ async function findNewestListing(client) {
     }
 }
 
-async function findListingByUrl(client, link) {
+async function findListingByUrl(client, link) { // finds listing using link
     try {
         const result = await client.db("scraped").collection("data").findOne({ link: link });
         return result;
